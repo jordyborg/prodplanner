@@ -1,29 +1,41 @@
 import React, { useState } from "react";
-import { push } from "firebase/database";
-// import { db } from "./firebase";
+import { collection, addDoc } from "firebase/firestore"; 
+import { db, app } from "../firebase";
 
-const TodoForm = ({ addTodo }) => {
+const TodoForm = () => {
   const [text, setText] = useState("");
+  const collectionRef = collection(db, 'todolist');
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    if (text.trim()) {
-      try {
-        const newTodoRef = push(db.ref("todos"));
-        const newTodoKey = newTodoRef.key;
-        await newTodoRef.set({
-          id: newTodoKey,
-          text: text.trim(),
-        });
-        addTodo({
-          id: newTodoKey,
-          text: text.trim(),
-        });
-        setText("");
-      } catch (error) {
-        console.error("Error adding todo: ", error);
-      }
-    }
+    addDoc(collectionRef, {
+        item: text
+    }) 
+    .then((res) => {
+        alert('Data added');
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
+    
+   
+    // if (text.trim()) {
+    //   try {
+    //     const newTodoRef = push(db.ref("todos"));
+    //     const newTodoKey = newTodoRef.key;
+    //     await newTodoRef.set({
+    //       id: newTodoKey,
+    //       text: text.trim(),
+    //     });
+    //     addTodo({
+    //       id: newTodoKey,
+    //       text: text.trim(),
+    //     });
+    //     setText("");
+    //   } catch (error) {
+    //     console.error("Error adding todo: ", error);
+    //   }
+    // }
   };
 
   return (

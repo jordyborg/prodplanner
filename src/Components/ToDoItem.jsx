@@ -1,6 +1,6 @@
 import React from "react";
 import { remove } from "firebase/database";
-// import { db } from "./firebase";
+import { db, app } from "../firebase";
 
 const TodoItem = ({ todo, deleteTodo }) => {
   const handleDelete = async () => {

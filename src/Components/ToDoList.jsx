@@ -1,14 +1,44 @@
 import React from "react";
 import TodoItem from "./ToDoItem";
+import { db, app } from "../firebase";
+import { getDocs, collection } from 'firebase/firestore';
+import { useState } from "react";
 
-const TodoList = ({ todos, deleteTodo }) => {
+const TodoList = () => {
+    const [list, setList] = useState([]);
+    
+    const collectionRef = collection(db, 'todolist');
+    
+    const getDoc = () => {
+    getDocs(collectionRef).then((res) => {
+        res.docs.forEach((item) => {
+            const task = item.data();
+            // setList((prevState) => {
+                if (!list.includes(task.item)) {
+                    setList(prevState => [...prevState, task.item]);
+                }
+        });
+    });
+    console.log(list);
+};
+getDoc()
+
   return (
+   <div>
+    <button onClick={getDoc}>get data</button>
     <ul>
-      {todos.map((todo) => (
-        <TodoItem key={todo.id} todo={todo} deleteTodo={deleteTodo} />
-      ))}
+     { list.map((item) => {
+       return <li>
+            {item}
+        </li>
+     })}
     </ul>
+    </div>
   );
 };
 
 export default TodoList;
+
+// {todos.map((todo) => (
+//     <TodoItem key={todo.id} todo={todo} deleteTodo={deleteTodo} />
+//     ))}
