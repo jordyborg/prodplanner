@@ -6,10 +6,16 @@ import { db, app } from "./firebase";
 import LogInForm from './Components/LoginForm';
 import SignUpForm from './Components/SignUpForm';
 import './App.css'
+import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import Header from "./Components/Header";
+import { getAuth } from "firebase/auth";
 
 const App = () => {
   const [todos, setTodos] = useState([]);
+  const [user, setUser] = useState(null);
 
+  const auth = getAuth()
+  
   useEffect(() => {
     const fetchTodos = async () => {
       try {
@@ -29,7 +35,21 @@ const App = () => {
     };
 
     fetchTodos();
+  
   }, []);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      console.log(user)
+      if (user) {
+        setUser(user);
+      } else {
+        setUser(null);
+      }
+    });
+
+    return () => unsubscribe();
+  })
 
   const deleteTodo = (id) => {
     setTodos(todos.filter((todo) => todo.id !== id));
@@ -37,15 +57,23 @@ const App = () => {
   console.log(todos);
 
   return (
-    <div>
-    <div> 
-      <SignUpForm /> 
-      <LogInForm /> 
-    </div>
-      <h1>Todo List</h1>
-      <TodoForm />
-      <TodoList />
-    </div>
+    <Router>
+      <div>
+        <Header user={user}/> 
+        <div> 
+            <Routes>
+              <Route path="/signup" element={<SignUpForm/>} />
+              <Route path="/login" element={<LogInForm/>} />
+              <Route path="/todolist" element={<TodoList/>} />
+              <Route path='/todoform' element={<TodoForm/>}/>
+            </Routes>
+        </div>
+        <h1>Todo List</h1>
+        
+        <TodoList />
+      </div>
+    </Router>
+
   );
 };
 

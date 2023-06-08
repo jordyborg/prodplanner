@@ -29,16 +29,15 @@ getDoc()
     <ul>
      { list.map((item) => {
        return <li>
-            {item}
+        <input
+        type="checkbox" />
+            {item} 
         </li>
      })}
+
     </ul>
     </div>
   );
 };
 
 export default TodoList;
-
-// {todos.map((todo) => (
-//     <TodoItem key={todo.id} todo={todo} deleteTodo={deleteTodo} />
-//     ))}
