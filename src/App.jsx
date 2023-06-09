@@ -46,26 +46,23 @@ const App = () => {
       } else {
         setUser(null);
       }
-    });
+    }, );
 
     return () => unsubscribe();
   })
 
-  const deleteTodo = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
-  };
-  console.log(todos);
 
   return (
     <Router>
       <div>
-        <Header user={user}/> 
-        <div> 
+        <Header user={user} setUser={setUser}/> 
+        <div className="main-div"> 
             <Routes>
               <Route path="/signup" element={<SignUpForm/>} />
               <Route path="/login" element={<LogInForm/>} />
               <Route path="/todolist" element={<TodoList/>} />
               <Route path='/todoform' element={<TodoForm/>}/>
+            
             </Routes>
         </div>
         <h1>Todo List</h1>

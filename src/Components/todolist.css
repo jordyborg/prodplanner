@@ -1,0 +1,16 @@
+.todoitems {
+    display: inline-block;
+    text-align: left;
+
+}
+
+.todoitems li {
+    padding-right: 40px;
+    display: flex;
+
+    align-items: center;
+}
+
+.todoitems li input {
+    margin: 10px;
+}

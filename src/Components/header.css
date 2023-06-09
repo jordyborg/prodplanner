@@ -1,0 +1,17 @@
+li {
+    list-style: none;
+  }
+  
+  ul {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    padding-bottom: 10px;
+  }
+  
+  .fakelink {
+    font-weight: 500;
+    color: #646cff;
+    text-decoration: inherit;
+    cursor: pointer;
+  }

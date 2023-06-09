@@ -40,3 +40,16 @@
 .read-the-docs {
   color: #888;
 }
+
+body {
+  background-color: black;
+  background-size: contain;
+  margin: 0 auto;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+.main-div {
+  display: flex;
+  justify-content: center;
+}
