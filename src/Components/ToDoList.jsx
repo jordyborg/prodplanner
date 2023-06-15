@@ -9,6 +9,21 @@ const TodoList = () => {
     const [category, setCategory] = useState("");
     const [filteredItems, setFilteredItems] = useState([]);
     
+    const todoListItems = [
+        {
+          date: '13-6-2023',
+          item: 'crackers'
+        },
+        {
+          date: '13-6-2023',
+          item: 'crackers'
+        },
+        {
+          date: '13-6-2023',
+          item: 'crackers'
+        }
+       ]
+
     const collectionRef = collection(db, 'todolist');
     
     const getDoc = () => {
@@ -56,6 +71,7 @@ const TodoList = () => {
 
   return (
    <div>
+    <h1>Todo List</h1>
     <div className="button-container">
         <button onClick={getDoc}>Refresh List!</button>
         <select
@@ -72,7 +88,7 @@ const TodoList = () => {
         </select>
     </div>
     <ul className="todoitems">
-        {filteredItems.map((item, index) => (
+        {/* {filteredItems.map((item, index) => (
           <li key={item.id} style={{textDecoration: item.isDeleted ? 'line-through' : 'none'  }}> 
             <input
               type="checkbox"
@@ -81,7 +97,17 @@ const TodoList = () => {
             {item.item}
             
           </li>
+        ))} */}
+        {todoListItems.map((item, index) => (
+         <li key={index}> 
+            <input
+                 type="checkbox"
+            />
+{ `${item.date} ${item.item}` }
+
+        </li>
         ))}
+    
     </ul> 
     </div>
   );

@@ -15,3 +15,7 @@ li {
     text-decoration: inherit;
     cursor: pointer;
   }
+
+.logo {
+    width: 200px;
+  }

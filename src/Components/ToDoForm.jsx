@@ -29,6 +29,12 @@ const TodoForm = () => {
     <div className="post-it-note">
       <h2 className="post-it-note__header">Add Todo</h2>
       <form onSubmit={handleSubmit}>
+        <label>date</label>
+        <input
+          type="date"
+          min="2023-01-01"
+          max="2024-01-01"
+        />
         <input
           type="text"
           value={text}
