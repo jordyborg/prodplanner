@@ -88,7 +88,7 @@ const TodoList = () => {
         </select>
     </div>
     <ul className="todoitems">
-        {/* {filteredItems.map((item, index) => (
+        {filteredItems.map((item, index) => (
           <li key={item.id} style={{textDecoration: item.isDeleted ? 'line-through' : 'none'  }}> 
             <input
               type="checkbox"
@@ -97,13 +97,13 @@ const TodoList = () => {
             {item.item}
             
           </li>
-        ))} */}
+        ))}
         {todoListItems.map((item, index) => (
          <li key={index}> 
             <input
                  type="checkbox"
             />
-{ `${item.date} ${item.item}` }
+        { `${item.date} ${item.item}` }
 
         </li>
         ))}

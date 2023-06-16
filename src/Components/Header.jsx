@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { getAuth, signOut } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 import "./header.css"
-import logo from '../images/PP.png'
+import logo from '../images/pp1.png'
 
 let Header = ({user, setUser}) => {
   const navigate = useNavigate()

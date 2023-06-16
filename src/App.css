@@ -14,14 +14,59 @@
 }
 
 body {
-  background-color: rgb(143, 226, 231);
+  background-color: rgb(255, 204, 252);
   background-size: contain;
   margin: 0 auto;
   min-width: 320px;
   min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: var(--text-color);
 }
 
 .main-div {
   display: flex;
   justify-content: center;
 }
+
+
+/* Color palette */
+:root {
+  --primary-color: #94d7e6;
+  --secondary-color: #f3a6bd;
+  --accent-color: #ffa24d;
+  --text-color: #ffa24d;
+  }
+  
+  /* Typography */ 
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  }
+  
+  .section {
+  margin: 4rem 0;
+  }
+  
+  /* Effects */
+  a {
+  color: var(--primary-color);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: border-bottom 0.2s ease-in-out;
+  }
+  
+  a:hover {
+  border-bottom: 2px solid var(--accent-color);
+  }
+  
+  .text-shadow {
+  text-shadow: 2px 2px var(--secondary-color);
+  }
+  
+  .gradient-text {
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  }
